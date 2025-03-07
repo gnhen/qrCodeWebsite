@@ -10,7 +10,7 @@
         input { width: 80%; max-width: 300px; padding: 10px; margin-bottom: 10px; }
         button { padding: 10px 15px; cursor: pointer; }
         #qrcode-container { display: flex; flex-direction: column; align-items: center; margin-top: 20px; }
-        #qrcode { display: inline-block; }
+        #qrcode canvas { background: white; padding: 10px; border-radius: 5px; }
         #download { margin-top: 10px; padding: 8px 12px; text-decoration: none; background: #007bff; color: white; border-radius: 5px; display: none; }
     </style>
 </head>
@@ -29,23 +29,27 @@
             if (!text) return;
 
             document.getElementById('qrcode').innerHTML = "";
-            let qr = new QRCode(document.getElementById('qrcode'), { text: text, width: 200, height: 200 });
+            let qr = new QRCode(document.createElement('div'), { text: text, width: 200, height: 200 });
 
             setTimeout(() => {
-                let qrImage = document.querySelector('#qrcode img');
+                let qrImage = qr._oDrawing._elImage || qr._oDrawing._elCanvas;
                 if (qrImage) {
+                    let borderSize = 20;
                     let canvas = document.createElement("canvas");
                     let ctx = canvas.getContext("2d");
+
                     let img = new Image();
                     img.crossOrigin = "anonymous";
-                    img.src = qrImage.src;
+                    img.src = qrImage.toDataURL("image/png");
                     img.onload = function () {
-                        let borderSize = 20;
                         canvas.width = img.width + borderSize * 2;
                         canvas.height = img.height + borderSize * 2;
                         ctx.fillStyle = "white";
                         ctx.fillRect(0, 0, canvas.width, canvas.height);
                         ctx.drawImage(img, borderSize, borderSize);
+
+                        document.getElementById('qrcode').appendChild(canvas);
+
                         document.getElementById('download').href = canvas.toDataURL("image/png");
                         document.getElementById('download').style.display = 'inline-block';
                     };
