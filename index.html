@@ -25,9 +25,27 @@
             margin-bottom: 10px;
         }
 
-        button {
+        .button-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        button,
+        .button-link {
             padding: 10px 15px;
             cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        button:hover,
+        .button-link:hover {
+            background-color: #0056b3;
         }
 
         #qrcode-container {
@@ -58,7 +76,10 @@
 <body>
     <h2>QR Code Generator</h2>
     <input type="text" id="text" placeholder="Enter text or URL">
-    <button onclick="generateQR()">Generate QR Code</button>
+    <div class="button-container">
+        <button onclick="generateQR()">Generate QR Code</button>
+        <a href="scan.html" class="button-link">Scan QR Code</a>
+    </div>
     <div id="qrcode-container">
         <div id="qrcode"></div>
         <a id="download" download="qrcode.png">Download QR Code</a>
