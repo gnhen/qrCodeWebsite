@@ -4,18 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator</title>
+    <meta name="description" content="A fast and completely free QR code maker. Generate your QR codes instantly on this QR code website with absolutely no ads.">
+    <meta name="keywords" content="qr code maker, qr code website, qr code no ads, qr code free, qr generator">
+    <meta property="og:title" content="Free QR Code Maker | No Ads">
+    <meta property="og:description" content="Generate your QR codes instantly for free. 100% no ads.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="icon.png">
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <title>Free QR Code Maker | No Ads QR Code Website</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
+        * {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
+            padding-top: 120px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
+            justify-content: flex-start;
+            min-height: 100vh;
+            box-sizing: border-box;
         }
 
         input {
@@ -58,7 +74,8 @@
         #qrcode canvas {
             background: white;
             padding: 10px;
-            border-radius: 5px;
+            border-radius: 12px;
+            border: 4px solid black;
         }
 
         #download {
@@ -74,7 +91,13 @@
 </head>
 
 <body>
-    <h2>QR Code Generator</h2>
+    <a href="https://granthendricks.com" style="position: absolute; top: 15px; left: 15px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: black; font-weight: 900; font-size: 24px;">
+        <img src="icon.png" alt="gnhen logo" style="width: 50px; height: 50px; border-radius: 5px; object-fit: contain;">
+        Designed by gnhen
+    </a>
+    <h1>Free QR Code Maker</h1>
+    <p style="font-size: 0.9rem; color: #555;">No ads, completely free QR code website</p>
+    <label for="text" style="display:none;">Enter text or URL to create a free QR code</label>
     <input type="text" id="text" placeholder="Enter text or URL">
     <div class="button-container">
         <button onclick="generateQR()">Generate QR Code</button>
@@ -83,6 +106,18 @@
     <div id="qrcode-container">
         <div id="qrcode"></div>
         <a id="download" download="qrcode.png">Download QR Code</a>
+    </div>
+
+    <div style="margin-top: 100px; max-width: 600px; text-align: left; padding: 30px; background: #f9f9f9; border-radius: 10px; border: 1px solid #eee;">
+        <h2 style="margin-top: 0;">Why Choose Our Free QR Code Maker?</h2>
+        <p>We believe creating a QR code should be simple, fast, and <strong>100% free</strong>. Unlike other tools, this QR code website has:</p>
+        <ul style="line-height: 1.6;">
+            <li><strong>Zero Ads:</strong> No annoying pop-ups or misleading download buttons.</li>
+            <li><strong>No Expiration:</strong> Create permanent static QR codes that never expire.</li>
+            <li><strong>Privacy First:</strong> Your text and links are processed securely and aren't stored on our servers.</li>
+            <li><strong>High Quality:</strong> Download crisp, high-resolution PNGs ready for print or digital media.</li>
+            <li><strong>Completely Free:</strong> There are no premium features hidden behind a paywall. Everything you see is free forever.</li>
+        </ul>
     </div>
 
     <script>
